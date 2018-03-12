@@ -1,0 +1,118 @@
+@font-face {
+  font-family: "star-wars";
+  src: url("../fonts/Strjmono.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  background-image: url(../images/star-wars.jpg);
+  color: #af5c18;
+}
+.heading {
+  font-family: star-wars;
+  font-size: 120px;
+  padding-left: 18%;
+  color: #af5c18;
+}
+.main {
+  margin-left: 18%;
+}
+img {
+  height: 75px;
+  width: 75px;
+}
+.char {
+  display: inline-block;
+  color: #352c2c;
+  width: 120px;
+  height: 115px;
+  margin: 0em;
+  border: 4px solid #af5c18;
+  background-color: #c2c2c2;
+}
+.char h2 {
+  padding-left: 8px;
+}
+.char img {
+  padding-left: 20px;
+  padding-top: 5px;
+}
+.char .score {
+  padding-left: 46px;
+}
+.enemy {
+  display: inline-block;
+  color: #352c2c;
+  width: 120px;
+  height: 115px;
+  margin: 0em;
+  border: 4px solid #af5c18;
+  background-color: #c2c2c2;
+  margin: 0.1em;
+  margin-top: 10px;
+}
+.enemy h2 {
+  padding-left: 8px;
+}
+.enemy img {
+  padding-left: 20px;
+  padding-top: 5px;
+}
+.enemy .score {
+  padding-left: 46px;
+}
+.mychar {
+  display: inline-block;
+  color: #352c2c;
+  width: 120px;
+  height: 115px;
+  margin: 0em;
+  border: 4px solid #af5c18;
+  background-color: #c2c2c2;
+}
+.mychar h2 {
+  padding-left: 8px;
+}
+.mychar img {
+  padding-left: 20px;
+  padding-top: 5px;
+}
+.mychar .score {
+  padding-left: 46px;
+}
+.defender {
+  display: inline-block;
+  color: #352c2c;
+  width: 120px;
+  height: 115px;
+  margin: 0em;
+  border: 4px solid #af5c18;
+  background-color: #c2c2c2;
+}
+.defender h2 {
+  padding-left: 8px;
+}
+.defender img {
+  padding-left: 20px;
+  padding-top: 5px;
+}
+.defender .score {
+  padding-left: 46px;
+}
+.character-heading {
+  color: #af5c18;
+  font-size: 25px;
+  font-weight: bold;
+}
+.enemies-sec {
+  position: relative;
+  margin-top: 25px;
+}
+.defender-sec {
+  position: relative;
+  margin-top: 25px;
+}
+.button {
+  color: #81634b;
+  font-weight: bold;
+}

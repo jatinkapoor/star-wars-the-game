@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Star-Wars</title>
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1 class="heading">STAR WARS</h1>
+    </header>
+    <div class="main">
+        <div id="characters">
+            <span class="char" id="character1" value="van_kenobi">
+                <h2 style="padding-left:20px;" class="name">Van kenobi</h2>
+                <img src="./assets/images/van-kenobi.jpg" alt="">
+                <h2 class="score">120</h2>
+              </span>
+            <span class="char" id="character2" value="luke_skywalker">
+                <h2 class="name">Luke Skywalker</h2>
+                <img src="./assets/images/luke-skywalker.jpg" alt="">
+                <h2 class="score">100</h2>
+              </span>
+            <span class="char" id="character3" value="darth_siditious">
+                <h2 class="name">Darth Siditious</h2>
+                <img src="./assets/images/darth-siditious.jpg" alt="">
+                <h2 class="score">150</h2>
+              </span>
+            <span class="char" id="character4" value="darth_maul">
+                <h2 style="padding-left:20px;" class="name">Darth Maul</h2>
+                <img src="./assets/images/darth-maul.jpg" alt="">
+                <h2 class="score">180</h2>
+              </span>
+        </div>
+        <div id="your-character">
+            <h2 class="character-heading">Your Character</h2>
+        </div>
+        <div class="enemies-sec" id="enemies">
+            <h2 class="character-heading">Enemies Available To Attack</h2>
+        </div>
+
+        <div class="attack-sec">
+            <button class="button" id="attack">
+          Attack
+        </button>
+        </div>
+
+        <div class="defender-sec" id="defender">
+            <h2 class="character-heading">Defender</h2>
+        </div>
+
+        <div class="messages" id="messages">
+            <h2 class="messages"></h2>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+    <script src="./assets/javascript/game.js"></script>
+</body>
+
+</html>
