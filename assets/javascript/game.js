@@ -35,18 +35,19 @@ $(document).ready(function() {
       if ($('.defender').length > 0) {
         /* Check for player's loss and if yes give an option to reset and play again */
         if (checkForLoss()) {
-          console.log("You have been defeated");
           $('#attack').remove();
-          $('.messages').append('You have been defeated, Click Reset');
+          $('.messages').text('');
+          $('.messages').append('You have been defeated, click reset to play again');
           $('.messages').append('</br>');
           $('.messages').append('<button id="reset" class="button">Reset</button>');
         } else {
           iAttack();
           if (checkForDefenderDefeat()) {
-            console.log("You have defeated" + defender);
+            $('.messages').append(`You have defeated ${defender.split('_')[0]}  ${defender.split('_')[1]}, select another defender`);
             $('.defender').remove();
             if (checkForAllEnemiesDefeated()) {
-              $('.messages').append('You Won, Click Reset To Play Again');
+              $('.messages').text('');
+              $('.messages').append('You won, click reset to play again');
               $('.messages').append('</br>');
               $('.messages').append('<button id="reset" class="button">Reset</button>');
             }
@@ -55,8 +56,7 @@ $(document).ready(function() {
           }
         }
       } else {
-        console.log("No Character Selected , and no defender selected");
-        $('.messages').text('Select your Character, and a defender');
+        $('.messages').text('You must select a character, and a defender');
       }
   });
 
@@ -98,12 +98,16 @@ $(document).ready(function() {
   const iAttack = function() {
     hp_defender = hp_defender - (pw_mychar * attackCount);
     updateHealthPointDefender();
+    $('.messages').text('');
+    $('.messages').append(`You attacked ${defender.split('_')[0]}  ${defender.split('_')[1]} for ${eval(pw_mychar * attackCount)} damage.`);
+    $('.messages').append('</br>');
     attackCount++;
   };
 
   const defenderAttack = function() {
     hp_mychar = hp_mychar - pw_defender;
     updateHealthPointMyChar();
+    $('.messages').append(`${defender.split('_')[0]}  ${defender.split('_')[1]} attacked you for ${pw_defender} damage.`);
   };
 
   const updateHealthPointMyChar = function() {
@@ -136,3 +140,10 @@ $(document).ready(function() {
     location.reload(true);
   });
 });
+
+// Play/Pause audio function
+const togglePlay = () => {
+  let audioElement = document.getElementById('audio');
+  return audioElement.paused ? audioElement.play() : audioElement.pause();
+};
+

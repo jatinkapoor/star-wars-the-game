@@ -11,13 +11,19 @@
 </head>
 
 <body>
+
     <header>
-        <h1 class="heading">STAR WARS</h1>
+        <h1 class="heading"><u>STAR WARS</u></h1>
+        <audio id="audio" src="./assets/sound/theme.mp3" preload="auto" loop="loop">
+        </audio>
+        <a onclick="togglePlay()">
+            <img class="music" src="./assets/images/audio.png" alt="music">
+        </a>
     </header>
     <div class="main">
         <div id="characters">
             <span class="char" id="character1" value="van_kenobi">
-                <h2 style="padding-left:20px;" class="name">Van kenobi</h2>
+                <h2 style="padding-left:20px;" class="name">Van Kenobi</h2>
                 <img src="./assets/images/van-kenobi.jpg" alt="">
                 <h2 class="score">120</h2>
               </span>

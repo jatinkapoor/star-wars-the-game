@@ -16,6 +16,7 @@ body {
 }
 .main {
   margin-left: 18%;
+  margin-top: 18px;
 }
 img {
   height: 75px;
@@ -115,4 +116,14 @@ img {
 .button {
   color: #81634b;
   font-weight: bold;
+}
+.messages {
+  font-size: 20px;
+  color: #ff7b00;
+}
+.music {
+  float: left;
+  position: relative;
+  margin-top: -95px;
+  margin-left: 10%;
 }
