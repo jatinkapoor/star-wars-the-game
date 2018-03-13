@@ -35,28 +35,20 @@ $(document).ready(function() {
       if ($('.defender').length > 0) {
         /* Check for player's loss and if yes give an option to reset and play again */
         if (checkForLoss()) {
-          $('#attack').remove();
-          $('.messages').text('');
-          $('.messages').append('You have been defeated, click reset to play again');
-          $('.messages').append('</br>');
-          $('.messages').append('<button id="reset" class="button">Reset</button>');
+          messageCheckForLoss();
         } else {
           iAttack();
           if (checkForDefenderDefeat()) {
-            $('.messages').append(`You have defeated ${defender.split('_')[0]}  ${defender.split('_')[1]}, select another defender`);
-            $('.defender').remove();
+            messageDefenderDefeat();
             if (checkForAllEnemiesDefeated()) {
-              $('.messages').text('');
-              $('.messages').append('You won, click reset to play again');
-              $('.messages').append('</br>');
-              $('.messages').append('<button id="reset" class="button">Reset</button>');
+              messageAllEnemiesDefeated();
             }
           } else {
             defenderAttack(); 
           }
         }
       } else {
-        $('.messages').text('You must select a character, and a defender');
+        messageCharacterAndDefender();
       }
   });
 
@@ -114,7 +106,7 @@ $(document).ready(function() {
     $('.mychar > .score').text(hp_mychar);
   };
   
-  const updateHealthPointDefender = function() {
+  const updateHealthPointDefender = function(){
     $('.defender > .score').text(hp_defender);
   };
 
@@ -124,17 +116,42 @@ $(document).ready(function() {
     }
   };
 
-  const checkForDefenderDefeat = function() {
+  const checkForDefenderDefeat = function(){
     if (hp_defender <= 0) {
       return true;
     }
   };
 
-  const checkForAllEnemiesDefeated = function() {
+  const checkForAllEnemiesDefeated = function(){
     if ($('.enemy').length === 0) {
       return true;
     }
   };
+
+  const messageDefenderDefeat = function() {
+    $('.messages').append(`You have defeated ${defender.split('_')[0]}  ${defender.split('_')[1]}, select another defender`);
+    $('.defender').remove();
+  }
+
+  const messageCharacterAndDefender = function(){
+    $('.messages').text('You must select a character, and a defender');
+  }
+
+  const messageAllEnemiesDefeated = function(){
+    $('#attack').remove();
+    $('.messages').text('');
+    $('.messages').append('You won, click reset to play again');
+    $('.messages').append('</br>');
+    $('.messages').append('<button id="reset" class="button">Reset</button>');
+  }
+
+  const messageCheckForLoss = function(){
+     $('#attack').remove();
+     $('.messages').text('');
+     $('.messages').append('You have been defeated, click reset to play again');
+     $('.messages').append('</br>');
+     $('.messages').append('<button id="reset" class="button">Reset</button>');
+  }
 
   $(document).on('click','#reset', function(){
     location.reload(true);
