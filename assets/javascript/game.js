@@ -16,12 +16,14 @@ $(document).ready(function() {
 
   let attackCount = 1;
   
+  //selects players character and moves other characters to enemy section
   $(document).on('click','.char', function() {
     $(this).siblings().appendTo('#enemies').attr('class', 'enemy');
     $(this).appendTo('#your-character').attr('class', 'mychar');
     setMyCharacter();
   });
 
+  //selects the defender for the player to fight against
   $(document).on('click', '.enemy', function () {
     
     if ($('.defender').length === 0) {
@@ -31,28 +33,33 @@ $(document).ready(function() {
     } 
   });
 
+  /** attack click function **/
   $(document).on('click','#attack', function() {
       if ($('.defender').length > 0) {
         /* Check for player's loss and if yes give an option to reset and play again */
         if (checkForLoss()) {
-          messageCheckForLoss();
+          messageCheckForLoss(); //display message when player loses
         } else {
-          iAttack();
+          iAttack(); //Action when player attacks
+          //checks if defender got defeated
           if (checkForDefenderDefeat()) {
-            messageDefenderDefeat();
+            //displays message when defender gets defeated
+            messageDefenderDefeat(); 
+            //checks if all enemies got defeated
             if (checkForAllEnemiesDefeated()) {
-              messageAllEnemiesDefeated();
+              messageAllEnemiesDefeated(); //display message when all enemies get defeated
             }
           } else {
-            defenderAttack(); 
+            defenderAttack(); //defender attacks the player
           }
         }
       } else {
+        //message when there is no character and defender selected and player tries to click attack.
         messageCharacterAndDefender();
       }
   });
 
-
+  //sets up player hp and pw
   const setMyCharacter = function() {
     mychar = $('.mychar').attr('value');
     if (mychar === char1) {
@@ -70,6 +77,7 @@ $(document).ready(function() {
     }
   }
 
+  //sets up defender hp and pw
   const setDefender = function() {
     defender = $('.defender').attr('value');
     if (defender === char1) {
@@ -87,6 +95,7 @@ $(document).ready(function() {
     }
   }
 
+  //attack function for player
   const iAttack = function() {
     hp_defender = hp_defender - (pw_mychar * attackCount);
     updateHealthPointDefender();
@@ -96,38 +105,45 @@ $(document).ready(function() {
     attackCount++;
   };
 
+  //attack function for defender
   const defenderAttack = function() {
     hp_mychar = hp_mychar - pw_defender;
     updateHealthPointMyChar();
     $('.messages').append(`${defender.split('_')[0]}  ${defender.split('_')[1]} attacked you for ${pw_defender} damage.`);
   };
 
+  //updates hp for players character
   const updateHealthPointMyChar = function() {
     $('.mychar > .score').text(hp_mychar);
   };
   
+  //updates hp for defender 
   const updateHealthPointDefender = function(){
     $('.defender > .score').text(hp_defender);
   };
 
+  //function to check for player's character loss
   const checkForLoss = function() {
     if (hp_mychar <= 0) {
       return true;
     }
   };
 
+  //function to check for defender's loss
   const checkForDefenderDefeat = function(){
     if (hp_defender <= 0) {
       return true;
     }
   };
 
+  //checks if all enenies got defeated
   const checkForAllEnemiesDefeated = function(){
     if ($('.enemy').length === 0) {
       return true;
     }
   };
 
+  /* Functions to display messages */
   const messageDefenderDefeat = function() {
     $('.messages').append(`You have defeated ${defender.split('_')[0]}  ${defender.split('_')[1]}, select another defender`);
     $('.defender').remove();
@@ -153,6 +169,7 @@ $(document).ready(function() {
      $('.messages').append('<button id="reset" class="button">Reset</button>');
   }
 
+  //reset game
   $(document).on('click','#reset', function(){
     location.reload(true);
   });
